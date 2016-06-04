@@ -9,6 +9,7 @@
   "author": "Guilherme Oenning <oenning.ti@gmail.com> (http://goenning.net/)",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^2.0.0",
     "express": "^4.13.4",
     "miniprofiler": "^0.2.0",
     "miniprofiler-pg": "0.0.1",

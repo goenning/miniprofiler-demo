@@ -2,6 +2,21 @@ doctype html
 html
   head
     title MiniProfiler Node.js Example
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='/default.css')
   body
-    h1 Home Page
+    header
+      h1
+        | Your to-do list
+    main
+      p Tell us what you need to do next:
+      form
+        input(type='text', maxlength='100', placeholder='My next task is ...')
+        button(type='submit') Submit
+      section.tasks
+        ul#tasks
+    script(src='https://code.jquery.com/jquery-2.2.1.min.js', integrity='sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=', crossorigin='anonymous')
+    script(src='/default.js')
     | !{miniprofiler.include()}
