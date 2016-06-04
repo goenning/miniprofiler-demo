@@ -1,0 +1,16 @@
+{
+  "name": "miniprofiler-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Guilherme Oenning <oenning.ti@gmail.com> (http://goenning.net/)",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4",
+    "miniprofiler": "^0.2.0",
+    "pug": "^2.0.0-beta2"
+  }
+}
