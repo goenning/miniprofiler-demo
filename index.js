@@ -7,10 +7,6 @@ var express = require('express')
 
 app.use(miniprofiler.express());
 app.use(miniprofiler.express.for(require('miniprofiler-pg')(pg)));
-app.use((req, res, next) => {
-  res.locals.miniprofiler = req.miniprofiler;
-  next();
-});
 
 app.set('view engine', 'pug');
 app.use(express.static('public'));
