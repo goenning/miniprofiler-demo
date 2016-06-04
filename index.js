@@ -3,12 +3,16 @@ var express = require('express')
   , app = express();
 
 app.set('view engine', 'pug');
-app.use(miniprofiler.profile());
+app.use(miniprofiler.express());
+app.use((req, res, next) => {
+  res.locals.miniprofiler = req.miniprofiler;
+  next();
+});
 
 app.get('/', function(req, res) {
   req.miniprofiler.step('Step 1', function() {
     req.miniprofiler.step('Step 2', function() {
-      res.render('home');
+      res.render('index');
     });
   });
 });
