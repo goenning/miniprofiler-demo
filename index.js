@@ -39,6 +39,7 @@ app.get("/tasks", function (req, res, next) {
 
     db.query('SELECT * FROM tasks').then((rows) => {
       client.set('all-tasks', JSON.stringify(rows));
+      client.expire('all-tasks', 10);
       res.send(rows);
     }).catch(next);
   });
