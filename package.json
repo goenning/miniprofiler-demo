@@ -15,7 +15,7 @@
     "express": "^4.13.4",
     "miniprofiler": "^0.2.5",
     "miniprofiler-pg": "0.0.1",
-    "miniprofiler-redis": "0.0.3",
+    "miniprofiler-redis": "0.0.4",
     "pg": "^5.0.0",
     "pg-promise": "^4.5.0",
     "pug": "^2.0.0-beta2",
