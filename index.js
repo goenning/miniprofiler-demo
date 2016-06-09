@@ -10,11 +10,7 @@ if (app.settings.env === 'development') {
 var miniprofiler = require('miniprofiler');
 var redis = require('redis');
 var client = redis.createClient(process.env.REDIS_URL);
-
-var pgp = require('pg-promise')({
-  // initialization options
-});
-
+var pgp = require('pg-promise')();
 var db = pgp(process.env.DATABASE_URL);
 
 app.use(miniprofiler.express());
