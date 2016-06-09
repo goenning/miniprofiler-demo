@@ -13,7 +13,7 @@
   "dependencies": {
     "docker-ip": "^2.0.1",
     "express": "^4.13.4",
-    "miniprofiler": "^0.2.3",
+    "miniprofiler": "^0.2.5",
     "miniprofiler-pg": "0.0.1",
     "miniprofiler-redis": "0.0.3",
     "pg": "^5.0.0",
