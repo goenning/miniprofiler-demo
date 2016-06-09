@@ -21,10 +21,12 @@ app.set('view engine', 'pug');
 app.use(express.static('public'));
 
 app.get('/', function(req, res, next) {
-  req.miniprofiler.step('Step 1', function() {
-    req.miniprofiler.step('Step 2', function() {
-      res.render('index');
-    });
+  req.miniprofiler.step('Something very slow in here...', function() {
+    for(var i=0;i<=100000000;i++) { }
+  });
+
+  req.miniprofiler.step('Do some more stuff', function() {
+    res.render('index');
   });
 });
 
