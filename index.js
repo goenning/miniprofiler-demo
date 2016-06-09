@@ -8,13 +8,17 @@ if (app.settings.env === 'development') {
 }
 
 var miniprofiler = require('miniprofiler');
-var pg = require('pg');
 var redis = require('redis');
 var client = redis.createClient(process.env.REDIS_URL);
-var db = require('pg-promise')()(process.env.DATABASE_URL);
+
+var pgp = require('pg-promise')({
+  // initialization options
+});
+
+var db = pgp(process.env.DATABASE_URL);
 
 app.use(miniprofiler.express());
-app.use(miniprofiler.express.for(require('miniprofiler-pg')(pg)));
+app.use(miniprofiler.express.for(require('miniprofiler-pg')(pgp.pg)));
 app.use(miniprofiler.express.for(require('miniprofiler-redis')(redis)));
 
 app.set('view engine', 'pug');
