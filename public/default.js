@@ -1,3 +1,7 @@
+$.ajaxSetup({
+    // Disable caching of AJAX responses
+    cache: false
+});
 
 $(function() {
   var refreshTasks = function() {
