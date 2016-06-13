@@ -13,11 +13,11 @@
   "dependencies": {
     "docker-ip": "^2.0.1",
     "express": "^4.13.4",
-    "miniprofiler": "^0.2.5",
+    "miniprofiler": "^0.2.6",
     "miniprofiler-pg": "0.0.1",
     "miniprofiler-redis": "0.0.4",
-    "pg": "^5.0.0",
-    "pg-promise": "^4.5.0",
+    "pg": "^5.1.0",
+    "pg-promise": "^4.6.3",
     "pug": "^2.0.0-beta2",
     "redis": "^2.6.1"
   }
