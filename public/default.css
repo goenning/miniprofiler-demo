@@ -34,6 +34,10 @@ form {
   border-radius: 3px;
 }
 
+form #refresh {
+  float:right;
+}
+
 input {
   display: block;
   margin-bottom: 10px;

@@ -25,6 +25,8 @@ $(function() {
     });
   });
 
+  $('#refresh').click(refreshTasks);
+
   $('#remove').click(function() {
     $.post('/remove-tasks', function() {
       refreshTasks();

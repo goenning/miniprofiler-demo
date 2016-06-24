@@ -9,7 +9,7 @@ html
   body
     header
       h1
-        | Your to-do list powered by 
+        | Your to-do list powered by
         a(href="https://github.com/MiniProfiler/node") MiniProfiler
     main
       a(href="https://github.com/goenning/miniprofiler-demo")
@@ -19,6 +19,7 @@ html
       form
         input(type='text', maxlength='100', placeholder='My next task is ...')
         button(type='submit') Submit
+        button(type='button', id='refresh') Refresh list
       p Tell us what you need to do next:
       section.tasks
         ul#tasks
