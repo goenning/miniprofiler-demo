@@ -16,6 +16,14 @@ h1 a {
   color: #805800;
 }
 
+h1 span {
+  font-size: 11px;
+  color: gray;
+  font-weight: normal;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
 .bold {
   font-weight: bold;
 }

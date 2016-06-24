@@ -1,4 +1,5 @@
 var express = require('express');
+var request = require("request");
 var app = express();
 
 if (app.settings.env === 'development') {
@@ -25,8 +26,17 @@ app.get('/', function(req, res, next) {
     for(var i=0;i<=100000000;i++) { }
   });
 
+
   req.miniprofiler.step('Do some more stuff', function() {
-    res.render('index');
+    var options = {
+      url: 'https://api.github.com/repos/MiniProfiler/node',
+      headers: { 'User-Agent': 'miniprofiler-node' }
+    };
+
+    request(options, (err, response, body) => {
+      var content = JSON.parse(body);
+      res.render('index', { count: content.stargazers_count });
+    });
   });
 });
 
