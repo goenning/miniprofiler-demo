@@ -8,7 +8,7 @@ $(function() {
     $.get('/tasks', function(tasks) {
       var target = $('ul#tasks').html('');
       tasks.forEach(function(task) {
-        $('<li></li>').text(task.title + ' [' + task.created_on + ']').appendTo(target);
+        $('<li></li>').text(task.title + ' [' + new Date(task.created_on).toLocaleString() + ']').appendTo(target);
       });
     });
   };
@@ -22,6 +22,12 @@ $(function() {
       refreshTasks();
       $('input').val('');
       $('input').focus();
+    });
+  });
+
+  $('#remove').click(function() {
+    $.post('/remove-tasks'), function() {
+      refreshTasks();
     });
   });
 });

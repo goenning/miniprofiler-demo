@@ -39,7 +39,7 @@ app.get("/tasks", function (req, res, next) {
       return
     }
 
-    db.query('SELECT * FROM tasks').then((rows) => {
+    db.query('SELECT * FROM tasks ORDER BY created_on DESC').then((rows) => {
       client.set('all-tasks', JSON.stringify(rows));
       client.expire('all-tasks', 10);
       res.send(rows);
@@ -49,6 +49,13 @@ app.get("/tasks", function (req, res, next) {
 
 app.post("/tasks", function (req, res, next) {
   db.query('INSERT INTO tasks (title, created_on) VALUES ($1, $2)', [ req.query.task, new Date() ]).then(function() {
+    client.del('all-tasks');
+    res.sendStatus(200);
+  }).catch(next);
+});
+
+app.post("/remove-tasks", function (req, res, next) {
+  db.query('DELETE FROM tasks').then(function() {
     client.del('all-tasks');
     res.sendStatus(200);
   }).catch(next);

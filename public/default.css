@@ -8,8 +8,12 @@ body {
 }
 
 h1 {
+  color: #ffd882;
+}
+
+h1 a {
   font-weight: bold;
-  color: pink;
+  color: #805800;
 }
 
 .bold {
@@ -23,7 +27,7 @@ p {
 form {
   margin-bottom: 25px;
   padding: 15px;
-  background-color: cyan;
+  background-color: #ffd882;
   display: inline-block;
   width: 100%;
   max-width: 340px;
