@@ -17,6 +17,7 @@ var db = pgp(process.env.DATABASE_URL);
 app.use(miniprofiler.express());
 app.use(miniprofiler.express.for(require('miniprofiler-pg')(pgp.pg)));
 app.use(miniprofiler.express.for(require('miniprofiler-redis')(redis)));
+app.use(miniprofiler.express.for(require('miniprofiler-http')()));
 
 app.set('view engine', 'pug');
 app.use(express.static('public'));
