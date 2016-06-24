@@ -26,7 +26,7 @@ $(function() {
   });
 
   $('#remove').click(function() {
-    $.post('/remove-tasks'), function() {
+    $.post('/remove-tasks', function() {
       refreshTasks();
     });
   });
