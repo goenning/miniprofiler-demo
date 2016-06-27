@@ -5,6 +5,7 @@ $.ajaxSetup({
 
 $(function() {
   var refreshTasks = function() {
+    console.log("called")
     $.get('/tasks', function(tasks) {
       var target = $('ul#tasks').html('');
       tasks.forEach(function(task) {

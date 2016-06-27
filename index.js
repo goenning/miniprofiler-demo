@@ -23,17 +23,25 @@ app.set('view engine', 'pug');
 app.use(express.static('public'));
 
 app.get('/', function(req, res, next) {
+  //Create a custom step
   req.miniprofiler.step('Something very slow in here...', function() {
     for(var i=0;i<=100000000;i++) { }
   });
 
-
+  //Create another custom step to group some other profiled tasks
   req.miniprofiler.step('Do some more stuff', function() {
+
     var options = {
       url: 'https://api.github.com/repos/MiniProfiler/node',
       headers: { 'User-Agent': 'miniprofiler-node' }
     };
 
+    //Set GitHub OAuth Token if exists
+    if (process.env.GH_OAUTH_TOKEN) {
+      options.headers['Authorization'] = `token ${process.env.GH_OAUTH_TOKEN}`;
+    }
+
+    //Make HTTP request that will be profiled
     request(options, (err, response, body) => {
       var content = JSON.parse(body);
       res.render('index', { count: content.stargazers_count });
@@ -72,6 +80,7 @@ app.post("/remove-tasks", function (req, res, next) {
   }).catch(next);
 });
 
+//Reset all redis data before starting app
 client.flushall(function() {
   app.listen(process.env.PORT || 8080, function(){
     console.log('Connected to postgres %s', process.env.DATABASE_URL)
