@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start-postgres": "docker build -t miniprofiler-demo/postgres docker/postgres && docker run -d -p 5432:5432 miniprofiler-demo/postgres",
+    "start-postgres": "docker build -t miniprofiler-demo/postgres docker/postgres && docker run -d -p 5444:5432 miniprofiler-demo/postgres",
     "start-redis": "docker build -t miniprofiler-demo/redis docker/redis && docker run -d -p 6379:6379 miniprofiler-demo/redis",
+    "start-services": "npm run start-redis && npm run start-postgres",
     "start": "node index.js"
   },
   "author": "Guilherme Oenning <oenning.ti@gmail.com> (http://goenning.net/)",
@@ -13,7 +14,7 @@
   "dependencies": {
     "docker-ip": "^2.0.1",
     "express": "^4.13.4",
-    "miniprofiler": "^0.2.6",
+    "miniprofiler": "^1.0.1",
     "miniprofiler-http": "0.0.1",
     "miniprofiler-pg": "0.0.1",
     "miniprofiler-redis": "0.0.4",

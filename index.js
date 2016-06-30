@@ -4,7 +4,7 @@ var app = express();
 
 if (app.settings.env === 'development') {
   var ip = require('docker-ip');
-  process.env.DATABASE_URL = `postgres://docker:docker@${ip()}:5432/docker`
+  process.env.DATABASE_URL = `postgres://docker:docker@${ip()}:5444/docker`
   process.env.REDIS_URL = `redis://${ip()}:6379`
 }
 
@@ -24,13 +24,13 @@ app.use(express.static('public'));
 
 app.get('/', function(req, res, next) {
   //Create a custom step
-  req.miniprofiler.step('Something very slow in here...', function() {
+  req.miniprofiler.step('Something very slow in here...', (unstep) => {
     for(var i=0;i<=100000000;i++) { }
+    unstep(); 
   });
 
   //Create another custom step to group some other profiled tasks
-  req.miniprofiler.step('Do some more stuff', function() {
-
+  req.miniprofiler.step('Do some more stuff', (unstep) => {
     var options = {
       url: 'https://api.github.com/repos/MiniProfiler/node',
       headers: { 'User-Agent': 'miniprofiler-node' }
@@ -45,6 +45,7 @@ app.get('/', function(req, res, next) {
     request(options, (err, response, body) => {
       var content = JSON.parse(body);
       res.render('index', { count: content.stargazers_count });
+      unstep();
     });
   });
 });
