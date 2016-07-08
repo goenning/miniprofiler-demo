@@ -11,7 +11,7 @@ if (app.settings.env === 'development') {
 var miniprofiler = require('miniprofiler');
 var redis = require('redis');
 var client = redis.createClient(process.env.REDIS_URL);
-var pgp = require('pg-promise')();
+var pgp = require('pg-promise')({pgFormatting:true});
 var db = pgp(process.env.DATABASE_URL);
 
 app.use(miniprofiler.express());
@@ -26,7 +26,7 @@ app.get('/', function(req, res, next) {
   //Create a custom step
   req.miniprofiler.step('Something very slow in here...', (unstep) => {
     for(var i=0;i<=100000000;i++) { }
-    unstep(); 
+    unstep();
   });
 
   //Create another custom step to group some other profiled tasks
