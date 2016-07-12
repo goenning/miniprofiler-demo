@@ -14,13 +14,13 @@
   "dependencies": {
     "docker-ip": "^2.0.1",
     "express": "^4.13.4",
-    "miniprofiler": "^1.2.0",
+    "miniprofiler": "^1.2.1",
     "miniprofiler-http": "^1.0.0",
     "miniprofiler-pg": "^1.0.0",
     "miniprofiler-redis": "^1.0.0",
-    "pg-promise": "^5.1.0",
+    "pg-promise": "^5.1.3",
     "pug": "^2.0.0-beta2",
     "redis": "^2.6.1",
-    "request": "^2.72.0"
+    "request": "^2.73.0"
   }
 }
